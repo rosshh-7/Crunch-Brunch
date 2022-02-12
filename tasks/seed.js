@@ -19,8 +19,8 @@ async function main() {
         'male',
         'LA',
         'CA',
-        'AkshayS',
-        'AkshaySPW'
+        'RoshanB',
+        'Roshan123'
     );
     const userB = await signup.createUser(
         'Haoyu',
