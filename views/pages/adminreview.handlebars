@@ -1,0 +1,55 @@
+
+{{!-- Start of Review Section --}}
+{{#if allreviews}}
+<section class="section review-section pt-5 pb-5 bg-white">
+    <div class="container">
+            <h1 class="main-heading text-center mt-5 mb-5">Reviews</h1>
+            <div class="slider slider-nav">
+                {{#each allreviews}}
+                <form method="POST" action="/admin/viewreview">
+                <div class="card review-card">
+                    <div class="card-body">
+                        <p class="card-title">{{review}}</p>
+                        <p class="card-text">Rating : {{rating}} / 5</p>
+                        <p class="card-text">Date : {{dateofReview}}</p>
+                        <input name="reviewid" type="text" value="{{review_id}}" class="form-control" hidden>
+                        <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure to delete?');"><span class="material-icons">delete</span></button>
+                        {{!-- <a href="#" class="btn btn-danger">Go somewhere</a> --}}
+                        
+                    </div>
+                </div> 
+
+                 <!-- Modal -->
+                {{!-- <div class="modal fade deletreview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Alert</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure to delete ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                  --}}
+                 
+
+
+                </form>
+                {{/each}}
+            </div>
+        </div>
+</section>
+{{else}}
+<section class="section review-section pt-5 pb-5">
+    <div class="container">
+        <h2 class="main-heading text-center mt-5 mb-5">Reviews are not available.</h2>
+    </div>
+</section>
+{{/if}}
+{{!-- End of Review Section --}}

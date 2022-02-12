@@ -1,0 +1,73 @@
+
+
+<section class="section admin-section">
+    <div class="container">
+        <div class="row">
+            <h1 class="main-heading text-center mt-5 mb-5">Admin</h1>
+        </div>
+        <div class="accordion-item mb-5">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                Add New Advertisement
+            </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    
+                    <form class="row g-0" id='advertiseForm' method="post" action="./addadvertise" encType="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="Type Advertise Name" id="advertiseTitle" name="advertiseTitle">
+                            <label for="advertiseTitle">Advertise Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="Type Advertise Description" id="advertiseDescription" name="advertiseDescription">
+                            <label for="advertiseDescription">Advertise Description</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">File input example</label>
+                            <input class="form-control" type="file" name="menuFile" id="formFile">
+                        </div>
+
+                            <div class="col-12" id="errordiv">
+                        
+                        </div>
+                        {{#if err}}
+                            <div class="col-12" id="errorss">
+                        <p>{{err}}</p>
+                        </div>
+                        {{/if}}
+    
+
+                        <div class="col-12">
+                            <button type="button" onclick="AddAdvertise()" class="btn btn-primary">Publish</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/public/js/AddAdvertise.js"></script>
+
+
+
+{{!-- 
+<form ref='uploadForm' id='uploadForm' method="post" action="./updateMenu" encType="multipart/form-data">
+    <input type="text" id="itemCategory" name="itemCategory" value="{{itemCategory}}">
+        <input type="text" id="itemTitle" name="itemTitle" value="{{itemTitle}}">
+            <input type="text" id="itemDescription" name="itemDescription" value="{{itemDescription}}">
+                <input type="text" id="itemPrice" name="itemPrice" value="{{itemPrice}}">
+                    <input type="text" id="itemCalories" name="itemCalories" value="{{itemCalories}}">
+                        <input type="text" id="itemKeywords" name="itemKeywords" value="{{itemKeywords}}">
+                            <input type="file" name="menuFile">
+                            <input type="text" id="itemId" name="itemId" value="{{_id}}">
+
+        <input type="text" id="itemCategoryold" name="itemCategoryold" value="{{itemCategory}}" hidden>
+        <input type="text" id="itemTitleold" name="itemTitleold" value="{{itemTitle}}" hidden>
+        <input type="text" id="itemDescriptionold" name="itemDescriptionold" value="{{itemDescription}}" hidden>
+        <input type="text" id="itemPriceold" name="itemPriceold" value="{{itemPrice}}" hidden>
+        <input type="text" id="itemCaloriesold" name="itemCaloriesold" value="{{itemCalories}}" hidden>
+        <input type="text" id="itemKeywordsold" name="itemKeywordsold" value="{{itemKeywords}}" hidden>
+        
+        <input type="submit" value="submit"/>
+</form> --}}

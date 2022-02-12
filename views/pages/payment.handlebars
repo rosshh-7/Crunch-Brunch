@@ -1,0 +1,20 @@
+ 
+
+    <section class="section payment-section">
+        <div class="container">
+            <h1 class="main-heading pb-5 pt-5 text-center">Payment</h1>
+            <h2 class="fs-3 pb-5">Payments are accepted only via card.</h2>
+            <form class="pb-5 pt-5" action="./paymentpage" method="POST"> 
+                <script
+                src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="{{key}}" 
+                data-amount={{amt}}
+                data-currency="usd" 
+                data-name="Your Brunch Payment" 
+                data-description="{{descriptionofCartItems}}" 
+                data-locale="auto" > 
+                </script> 
+            </form> 
+        </div>
+    </section>

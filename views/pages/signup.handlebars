@@ -1,0 +1,87 @@
+ {{!-- Start of Login Form --}}
+
+<section class="section login-form pt-3 yellow-section-background">
+  <div class="container">
+    <div class="mt-5 mb-5">
+      <h1 class="main-heading text-center mt-5 mb-5">Sign In</h1>
+      <p class="subheading card-title text-center mb-5">Sign into your Everyday Brunch account</p>
+    </div>
+    <form method="POST" action="/signup" id="signup-form">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-floating mb-5">
+              <input type="text" class="form-control" id="firstname" placeholder="John" name="firstname" required>
+              <label for="firstname">First Name</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating mb-5">
+              <input type="text" class="form-control" id="lastname" placeholder="Doe" name="lastname" required>
+              <label for="lastname">Last Name</label>
+            </div>
+          </div>
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+              <label for="dateOfBirth">Date of Birth</label>
+            </div>
+          </div>
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <input type="text" class="form-control" id="city" placeholder="Hoboken" name="city" required>
+              <label for="city">City</label>
+            </div>
+          </div>
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <input type="text" class="form-control" id="state" placeholder="NJ" name="state" required>
+              <label for="state">State</label>
+            </div>
+          </div>
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+              <label for="username">Username</label>
+            </div>
+          </div>
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+              <label for="floatingPassword">Password</label>
+            </div>
+          </div>  
+          <div class="col-sm-6">  
+            <div class="form-floating mb-5">
+              <select class="form-select" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer not to say">Prefer not to say</option>
+              </select>
+              <label for="gender">Gender</label>
+            </div>
+          </div>  
+        </div>
+        <div id="error">
+        <ul id="errorList"></ul>
+        </div>
+        <div id="errormessage" class="d-none"></div>
+        <div class="text-center pt-5 pb-5 d-grid gap-2 col-6 mx-auto"> 
+          <button type="submit" class="btn btn-primary btn-lg mb-3">Sign Up</button>
+          <span class="fs-5">Already have an account? <a class="js-toggle-to-sign-up blue-text-link" href="/login">Login</a></span>
+        </div>
+      </div>
+    </form>
+    
+{{#if hasErrors}}
+  <span class="error">{{error}}</span>
+{{/if}}
+  </div>
+</section>

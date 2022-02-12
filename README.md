@@ -1,3 +1,6 @@
+# Web Programming (CS 546) Final Project
+## Overview
+This is the repository for the final project for Web Programming (CS 546) at Stevens Institute of Technology.
 
 This project aims to create a system to help users to order brunch from Everyday Brunch Restaurant. The website allows users to register first and then log in and search for their favourite brunch items from the restaurant’s menu. Further, the user can also place an order online using the website and receive an order confirmation on his/her specified email. The system also allows users to add reviews of their orders.
 
@@ -15,8 +18,8 @@ This project aims to create a system to help users to order brunch from Everyday
 
 ## Instructions to use the website
 Please use the username given below for "USER" login 
-* Username: RoshanB
-* Password: Roshan123
+* Username: AkshayS
+* Password: AkshaySPW
 
 Please use the username given below for "ADMIN" login 
 * Username: admin
@@ -40,3 +43,10 @@ So, please use the credentials given below.
 * password: 8454949819
 
 Food items are dependent on the categories so, please add the categories before food items.
+
+## Contributors
+* Roshan Badgujar
+* Haoyu Li
+* Akshay Sahasrabuddhe
+* Tanay Tadas
+* Yongxiang Zhang

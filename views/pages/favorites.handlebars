@@ -1,0 +1,203 @@
+{{!-- Start of Favorite Section --}}
+
+<section class="section menu-section yellow-section-background">
+    <div class="container">
+        <div class="menu-card-box">
+            <div class="row">
+                <h1 class="main-heading text-center mt-5 mb-5">Favorite</h1>
+                {{#each data}}
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card-container">
+                        <div class="cardbox" >
+                            
+                            <div class="card mycard">
+                                <div>
+                                    <img src="../../public/images/Menu/{{itemImage}}" class="card-img-top menu-img" alt="...">
+                                    <a href="#"><i class="fas fa-heart like-btn"></i></a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="menu-info">
+                                        <h5 class="card-title">{{itemTitle}}</h5>
+                                        <div class="menu-quantity d-flex">
+                                            <button type="button" class="btn btn-outline-primary quantity-btn" onclick="increment(event)" id="{{_id}}">+</button>
+                                            <input class="form-control form-control-sm quantity-txtbox text-center {{_id}}" type="text" value="1" aria-label=".form-control-sm example" disabled>
+                                            <button type="button" class="btn btn-outline-primary quantity-btn" onclick="decrement(event)" id="{{_id}}">-</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2" id="{{_id}}{{_id}}{{_id}}">$ {{itemPrice}}</p>
+                                        <p class="card-text mb-2">{{itemCalories}} Cal. </p>
+                                    </div>
+                                    <a href="{{_id}}" class="btn btn-primary cart-btn" id="{{_id}}" onclick="AddToCart(event)" >Add to Cart</a>
+                                    <a id="desc-btn" class="btn btn-outline-primary cart-btn">Description</a>
+                                </div>
+                            </div>
+                            <div class="card mycard1">
+                                <div class="card-img-top menu-img flipped-img" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-center">Description</h5>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2">{{itemDescription}}</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card-container">
+                        <div class="cardbox" onclick="flip(event)">
+                            <div class="card mycard">
+                                <div>
+                                    <img src="./public/images/trial-img.jpg" class="card-img-top menu-img" alt="...">
+                                    <a href="#"><i class="fas fa-heart like-btn"></i></a>
+                                </div>
+                                <div class="card-body">
+                                <div class="menu-info">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="menu-quantity d-flex">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">+</button>
+                                        <input class="form-control form-control-sm quantity-txtbox text-center" type="text" placeholder="1" aria-label=".form-control-sm example">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">-</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <p class="card-text mb-2">$ 10.00</p>
+                                    <p class="card-text mb-2">500 Cal. </p>
+                                </div>
+                                    <a href="#" class="btn btn-primary cart-btn" >Add to Cart</a>
+                                </div>
+                            </div>
+                            <div class="card mycard1">
+                                <div class="card-img-top menu-img flipped-img" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-center">Description</h5>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae perferendis qui sapiente nemo laborum iusto voluptatum officiis non reprehenderit at, eos dolor. Totam esse optio illum delectus quo, similique rem.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card-container">
+                        <div class="cardbox" onclick="flip(event)">
+                            <div class="card mycard">
+                                <div>
+                                    <img src="./public/images/trial-img.jpg" class="card-img-top menu-img" alt="...">
+                                    <a href="#"><i class="fas fa-heart like-btn"></i></a>
+                                </div>
+                                <div class="card-body">
+                                <div class="menu-info">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="menu-quantity d-flex">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">+</button>
+                                        <input class="form-control form-control-sm quantity-txtbox text-center" type="text" placeholder="1" aria-label=".form-control-sm example">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">-</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <p class="card-text mb-2">$ 10.00</p>
+                                    <p class="card-text mb-2">500 Cal. </p>
+                                </div>
+                                    <a href="#" class="btn btn-primary cart-btn" >Add to Cart</a>
+                                </div>
+                            </div>
+                            <div class="card mycard1">
+                                <div class="card-img-top menu-img flipped-img" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-center">Description</h5>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae perferendis qui sapiente nemo laborum iusto voluptatum officiis non reprehenderit at, eos dolor. Totam esse optio illum delectus quo, similique rem.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card-container">
+                        <div class="cardbox" onclick="flip(event)">
+                            <div class="card mycard">
+                                <div>
+                                    <img src="./public/images/trial-img.jpg" class="card-img-top menu-img" alt="...">
+                                    <a href="#"><i class="fas fa-heart like-btn"></i></a>
+                                </div>
+                                <div class="card-body">
+                                <div class="menu-info">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="menu-quantity d-flex">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">+</button>
+                                        <input class="form-control form-control-sm quantity-txtbox text-center" type="text" placeholder="1" aria-label=".form-control-sm example">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">-</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <p class="card-text mb-2">$ 10.00</p>
+                                    <p class="card-text mb-2">500 Cal. </p>
+                                </div>
+                                    <a href="#" class="btn btn-primary cart-btn" >Add to Cart</a>
+                                </div>
+                            </div>
+                            <div class="card mycard1">
+                                <div class="card-img-top menu-img flipped-img" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-center">Description</h5>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae perferendis qui sapiente nemo laborum iusto voluptatum officiis non reprehenderit at, eos dolor. Totam esse optio illum delectus quo, similique rem.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card-container">
+                        <div class="cardbox" onclick="flip(event)">
+                            <div class="card mycard">
+                                <div>
+                                    <img src="./public/images/trial-img.jpg" class="card-img-top menu-img" alt="...">
+                                    <a href="#"><i class="fas fa-heart like-btn"></i></a>
+                                </div>
+                                <div class="card-body">
+                                <div class="menu-info">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="menu-quantity d-flex">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">+</button>
+                                        <input class="form-control form-control-sm quantity-txtbox text-center" type="text" placeholder="1" aria-label=".form-control-sm example">
+                                        <button type="button" class="btn btn-outline-primary quantity-btn">-</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <p class="card-text mb-2">$ 10.00</p>
+                                    <p class="card-text mb-2">500 Cal. </p>
+                                </div>
+                                    <a href="#" class="btn btn-primary cart-btn" >Add to Cart</a>
+                                </div>
+                            </div>
+                            <div class="card mycard1">
+                                <div class="card-img-top menu-img flipped-img" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-center">Description</h5>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae perferendis qui sapiente nemo laborum iusto voluptatum officiis non reprehenderit at, eos dolor. Totam esse optio illum delectus quo, similique rem.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{!-- End of Favorite Section --}}

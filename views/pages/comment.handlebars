@@ -1,0 +1,26 @@
+<h1>reviews</h1>
+<section class="section comment-section">
+    <div class="container">
+        <form method="POST" action="/newreview" id="review-form">
+            <div class="comment-input">
+                <label for="food-name">Food Name:</label>
+                <input id="foodNameInput" type="text" placeholder="Please Enter Food Name...">
+            </div>
+            {{!-- <div class="comment-input">
+                <label for="rate">Rate:</label>
+                <span class="star-list">
+                    <img onclick="selectStar(event,1)" src="./public/images/comment/star-active.png" alt="" />
+                    <img onclick="selectStar(event,2)" src="./public/images/comment/star-active.png" alt="" />
+                    <img onclick="selectStar(event,3)" src="./public/images/comment/star-active.png" alt="" />
+                    <img onclick="selectStar(event,4)" src="./public/images/comment/star-active.png" alt="" />
+                    <img onclick="selectStar(event,5)" src="./public/images/comment/star.png" alt="" />
+                </span>
+            </div> --}}
+            <div class="comment-input">
+                <label for="comment-content">Content:</label>
+                <textarea id="contentInput" placeholder="Please Enter Content..." name="" id="" cols="30" rows="4"></textarea>
+            </div>
+            <a onclick="submitComment()" class="comment-btn btn btn-primary cart-btn position-relative">Submit</a>
+        </form>
+    </div>
+</section>

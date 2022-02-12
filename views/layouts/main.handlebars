@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everyday Brunch</title>
+    <link rel="stylesheet" href="/public/css/aboutus.css" />
+    <link rel="stylesheet" href="/public/css/packagelist.css" />
+    <link rel="stylesheet" href="/public/css/comment.css" />
+    <link rel="stylesheet" href="/public/css/backgrounds.css" />
+    <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/buttons.css" />
+    <link rel="stylesheet" href="/public/css/navigation.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body class="d-flex flex-column min-vh-100 yellow-section-background">
+
+    
+    <!-- Start of Navigation -->
+
+    <div class="navigation-section">
+        <nav class="navbar navbar-expand-lg navbar-dark black-section-background fixed-top brunch-nav">
+            <div class="container">
+                <a class="brunch-logo me-2" href="/"><img src="/public/images/Everyday_Brunch.gif" class="rounded img-fluid" alt="Brunch Logo" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu">Menu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        
+                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {{#each getCategory}}
+                            <li><a class="dropdown-item" href="/category?name={{category}}">{{category}}</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        {{/each}}
+                        </ul> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/advertisements">Advertisements</a>
+                    </li>
+                    {{!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Reviews</a>
+                    </li> --}}
+                   <li class="nav-item">
+                        <a class="nav-link" href="/bestseller">Best Seller</a>
+                    </li>
+                   
+                    {{!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li> --}}
+                </ul>
+                    <a class="btn btn-primary cart-btn me-4 position-relative" href="/cartpage" role="button">
+                        <img src="/public/images/cart.png" class="rounded img-fluid cart-img" alt="Cart Button"/>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter">{{counterValue}}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a>
+                     <form class="d-flex" method="post" action="/search">
+               
+                    <input class="form-control me-2" type="search" name="searchTerm" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary me-2" type="submit">Search</button>
+                </form>
+                    {{#unless id}}
+                <a class="btn btn-outline-primary login-btn login-link me-2" id="lbtn" href="/login">login</a>
+                    {{/unless}}
+                    {{#if id}}
+                <a class="btn btn-outline-primary logout-btn logout-link" href="/logout">logout</a>
+               
+                <a class="btn position-relative user-profile-btn" href="/users/profile" role="button">
+                    <img src="/public/images/user_profile.png" class="rounded img-fluid user-img" alt="user profile"/>
+                </a>
+                {{/if}}
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container" id="errordiv" hidden>
+        <p id="error"></p>
+    </div>
+
+    <!-- End of Navigation -->
+
+    {{{body}}}
+
+    <div class="footer-section black-section-background text-white mt-auto">
+        <div class="container">
+                <div class="d-flex justify-content-around pt-5 pb-5">
+                    <div><a class="main-label" href="/menu">Menu</a></div>
+                    <div><a class="main-label" href="/advertisements">Advertisements</a></div>
+                    <div><a class="main-label" href="/bestseller">Best Seller</a></div>
+                    <div><a class="main-label" href="/login">Login</a></div>
+                </div>
+                <div class="d-flex justify-content-around pb-5">
+                    <div class="d-flex flex-column text-center"><a href="https://twitter.com/" class="social-label"><i class="social-icon pb-2 fab fa-twitter"></i><p>Twitter</p></a></div>
+                    <div class="d-flex flex-column text-center"><a href="https://www.instagram.com/" class="social-label"><i class="social-icon pb-2 fab fa-instagram"></i><p>Instagram</p></a></div>
+                    <div class="d-flex flex-column text-center"><a href="https://www.facebook.com/" class="social-label"><i class="social-icon pb-2 fab fa-facebook"></i><p>Facebook</p></a></div>
+                    <div class="d-flex flex-column text-center"><a href="https://www.linkedin.com/" class="social-label"><i class="social-icon pb-2 fab fa-linkedin"></i><p>LinkedIn</p></a></div>
+                </div>
+                <div class="d-flex justify-content-around pb-5">
+                    <div><a class="main-label" href="/terms-and-conditions">Terms & Conditions</a></div>
+                    <div><a class="main-label" href="/privacy-policy">Privacy Policy</a></div>
+                </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+    <script src="/public/js/login.js"></script>
+    <script src="/public/js/signup.js"></script>
+        <script src="/public/js/AddToFav.js"></script>
+                <script src="/public/js/flipevent.js"></script>
+    
+    <script >
+        $(document).ready(function(){
+
+            $('.slider-nav').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 2000,
+                responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+            });
+
+        ///////////////////////////counter code that should run everytime
+ var requestConfig = {
+					method: 'get',
+					url: '/getCounter',
+
+				};
+
+                $.ajax(requestConfig).then(function(responseMessage) {
+					if(responseMessage.success){
+                        $('#counter').text(responseMessage.count)
+                    }
+					//                alert("Data Saved: " + msg);
+				});
+
+
+        });
+    </script>
+  
+    <script>
+       
+    </script>
+    <script>
+        function increment(event){
+            //alert(77)
+            let element = event.currentTarget;
+            let idd=element.id
+           let string1=''
+           for(let i=0;i<idd.length-2;i++){
+               string1=string1+idd[i]
+           }
+           let currentvalue= $(`.${string1}45`).val()
+           let newvalue=parseInt(currentvalue) + parseInt(1)
+
+               $(`.${string1}45`).val(newvalue)
+        }
+         function decrement(event){
+            
+            let element = event.currentTarget;
+            let idd=element.id
+            let string1=''
+            for(let i=0;i<idd.length-2;i++){
+               string1=string1+idd[i]
+           }
+            let newvalue;
+           let currentvalue= $(`.${string1}45`).val()
+           if(currentvalue==1){
+               newvalue=1
+           }else {
+
+            newvalue=currentvalue - 1
+              
+             
+           }
+            $(`.${string1}45`).val(newvalue)
+         }
+    </script> 
+    <script>
+    $(document).scroll(function () {
+        var $nav = $(".brunch-nav");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    });
+    </script>
+    
+    <script>
+        $('.add-item-btn').on("click", function () {
+        $('#liveToast').toast({animation:true, autohide: true, delay:3000});
+            $('#liveToast').toast("show");
+        });
+    </script>
+
+    <script >
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+
+    <script>
+        function selectStar(e, rate) {
+            for (let i = 0; i < e.currentTarget.parentNode.children.length; i++) {
+                e.currentTarget.parentNode.children[i].src = './public/images/comment/star.png'
+                if (i + 1 <= rate) {
+                    e.currentTarget.parentNode.children[i].src = './public/images/comment/star-active.png'
+                }
+            }
+        }
+        function submitComment(e) {
+            let userId = $('#comment-btn').data('user').userId
+            let review = $('#contentInput').val()
+            let foodName = document.getElementById('foodNameInput').value;
+            if (!userId) {
+                alert('Please Login First!')
+                return
+            }
+            else if (!foodName) {
+                alert('The foodName cannot be empty!')
+                return
+            } else if (/^[0-9]*$/.test(foodName)) {
+                alert('The foodName cannot be all numbers!')
+                return
+            } else if (!foodName.replace(/( )/g, "")) {
+                alert('The foodName cannot be empty!')
+                return
+            }
+            if (!review) {
+                alert('The content cannot be empty!')
+                return
+            } else if (/^[0-9]*$/.test(review)) {
+                alert('The content cannot be all numbers!')
+                return
+            } else if (!review.replace(/( )/g, "")) {
+                alert('The content cannot be empty!')
+                return
+            }
+
+            let rating = 0
+            let star = document.getElementsByClassName('star-list')[0].children
+            for (let i = 0; i < star.length; i++) {
+                if (star[i].src.indexOf('active') != -1) {
+                    rating++
+                }
+            }
+            var requestConfig = {
+                method: 'POST',
+                url: '/reviews/newreview',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    userId,
+                    review: '#' + foodName + '#' + review,
+                    rating
+                })
+            };
+
+            $.ajax(requestConfig).then((res) => {
+                if (res.success) {
+                    window.location.href = '/commentsuccess'
+                } else {
+                    alert(res.msg)
+                }
+            })
+        }
+    </script>
+
+</body>
+</html>

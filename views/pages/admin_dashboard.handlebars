@@ -1,0 +1,81 @@
+
+    <!-- Start of counter section -->
+
+<section class="section admin-section pb-5 yellow-section-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="main-heading text-center mt-5 mb-5">Admin Dashboard</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 mb-3">
+                <div class="card h-100 text-center">
+                {{!-- <img src="..." class="card-img-top" alt="..."> --}}
+                    <span id="count1" class="display-4"></span>
+                    <div class="card-body">
+                        <p class="card-title">Total Users</p>
+                        {{!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="card h-100 text-center">
+                {{!-- <img src="..." class="card-img-top" alt="..."> --}}
+                    <span id="count2" class="display-4"></span>
+                    <div class="card-body">
+                        <p class="card-title">Total Orders</p>
+                        {{!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="card h-100 text-center">
+                {{!-- <img src="..." class="card-img-top" alt="..."> --}}
+                    <span id="count3" class="display-4"></span>
+                    <div class="card-body">
+                        <p class="card-title">Total Catagories</p>
+                        {{!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="card h-100 text-center">
+                    {{!-- <img src="..." class="card-img-top" alt="..."> --}}
+                    <span id="count4" class="display-4">Total Categories</span>
+                    <div class="card-body">
+                        <p class="card-title">Total Menu</p>
+                        {{!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>        
+
+    <!-- End of counter section -->
+
+
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+        function counter(id, start, end, duration) {
+        let obj = document.getElementById(id),
+        current = start,
+        range = end - start,
+        increment = end > start ? 1 : -1,
+        step = Math.abs(Math.floor(duration / range)),
+        timer = setInterval(() => {
+            current += increment;
+            obj.textContent = current;
+            if (current == end) {
+            clearInterval(timer);
+            }
+        }, step);
+        }
+        counter("count1", 100, {{count1}}, 1000);
+        counter("count2", 100, {{count2}}, 1000);
+        counter("count3", 100, {{count3}}, 1000);
+        counter("count4", 100, {{count4}}, 1000);
+        });
+
+    </script>

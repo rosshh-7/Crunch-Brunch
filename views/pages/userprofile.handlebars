@@ -1,0 +1,323 @@
+{{#if data}}
+
+{{!-- Profile Section --}}
+<div class="section userprofile-section bg-white">
+    <div class="container">
+        <div class="user-banner-section">
+            <div class="user-banner yellow-section-background"></div>
+            <div class="row responsive-flexbox">
+                <div class="col-sm-2">
+                    {{#ifEquals data.gender "male"}}
+                    <img src="/public/images/male-user.svg" class="user-profile-pic" alt="./public/images/trial-img.jpg" />
+                    {{/ifEquals}}
+                    {{#ifEquals data.gender "female"}}
+                    <img src="/public/images/female-user.svg" class="user-profile-pic" alt="./public/images/trial-img.jpg"/>
+                    {{/ifEquals}}
+                    {{#ifEquals data.gender "other"}}
+                    <img src="/public/images/other.svg" class="user-profile-pic" alt="./public/images/trial-img.jpg"/>
+                    {{/ifEquals}}
+                    {{#ifEquals data.gender "prefer not to say"}}
+                    <img src="/public/images/other.svg" class="user-profile-pic" alt="./public/images/trial-img.jpg"/>
+                    {{/ifEquals}}
+                    
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-5 offset-lg-1 mt-3">
+                    <p class="user-icon fs-5 ms-lg-5 ps-lg-4"><span class="material-icons">person</span>{{data.firstName}} {{data.lastName}}</p>
+                    <p class="user-icon fs-5 ms-lg-5 ps-lg-4"><span class="material-icons">home</span> {{data.City}}, {{data.State}}</p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 mt-3">
+                    <p class="user-icon fs-5 ps-lg-4"><span class="material-icons">mail</span>{{data.email}}</p>
+                    <p class="user-icon fs-5 ps-lg-4"><span class="material-icons">cake</span>{{data.DateOfBirth}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- End of Profile Section --}}
+
+
+{{! orders of users}}
+
+
+{{!--  --}}
+{{!-- <h1>reviews</h1>
+<section class="section comment-section">
+    <div class="container">
+        <form method="POST" action="/reviews/newreview" id="review-form">
+            <div class="comment-input">
+                <input id="userid" name="userId" type="text" value="{{data._id}}">
+                <label for="review">Food Name:</label>
+                <input id="review" type="text" placeholder="Please Enter Food Name..." name="review">
+                <input id="rating" type="number" placeholder="Please Enter Food Name..." name="rating">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg mb-3">Submit</button>
+        </form>
+    </div>
+</section> --}}
+
+{{!--  --}}
+
+{{#if getOrder}}
+<div class="section admin-section">
+  <div class="container">
+    <div class="row">
+        <h1 class="main-heading text-center mt-5 mb-5">User Orders</h1>
+    </div>
+    <div class="accordion-item mb-5">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+            User Orders
+        </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body ">      
+              <table class="table table-striped table-dark table-hover">
+                <tr>
+                  <th>Order Number</th>
+                  <th>Order Date</th>
+                  <th>View Details</th>
+                  
+                </tr>
+                {{#each getOrder}}
+                <tr>
+                  <td>#{{order_id}}</td>
+                  <td>{{date}}</td>
+                  <td>
+                    <form method="post" action="./orderDetails">
+                      <input type="text" name="orderid" value="{{order_id}}" hidden>
+                      <button class="btn btn-success" type="submit"><span>Details</span></button>
+                    </form>
+                  </td>
+                </tr>
+                {{/each}}
+              </table> 
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{#if noorder}}
+<section class="section menu-section yellow-section-background">
+    <div class="container">
+        <div class="menu-card-box">
+            <div class="row">
+                <h1 class="main-heading text-center mt-5 mb-5">{{noorder}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+{{/if}}
+{{! orders of users}}
+
+{{! favourites of user}}
+
+{{!-- Start of Menu Section --}}
+{{#if json}}
+<section class="section menu-section yellow-section-background">
+    <div class="container">
+        <div class="menu-card-box">
+            <div class="row">
+                <h1 class="main-heading text-center mt-5 mb-5">My Favourites</h1>
+                {{#each json}}
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card-container">
+                        <div class="cardbox">
+                            
+                            <div class="card mycard">
+                                <div>
+                                    <img src="../../public/images/Menu/{{itemImage}}" class="card-img-top menu-img" alt="...">
+                                    <a href="#"><i class="fas fa-heart like-btn"></i></a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="menu-info">
+                                        <h5 class="card-title">{{itemTitle}}</h5>
+                                        <div class="menu-quantity d-flex">
+                                            <button type="button" class="btn btn-outline-primary quantity-btn" onclick="increment(event)" id="{{_id}}">+</button>
+                                            <input class="form-control form-control-sm quantity-txtbox text-center {{_id}}" type="text" value="1" aria-label=".form-control-sm example" disabled>
+                                            <button type="button" class="btn btn-outline-primary quantity-btn" onclick="decrement(event)" id="{{_id}}">-</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-around">
+                                        <p class="card-text mb-2" id="{{_id}}{{_id}}{{_id}}">$ {{itemPrice}}</p>
+                                        <p class="card-text mb-2">{{itemCalories}} Cal. </p>
+                                    </div>
+                                    <a href="{{_id}}" class="btn btn-primary cart-btn" id="{{_id}}" onclick="AddToCart(event)" >Add to Cart</a>
+                                    <a id="desc-btn" class="btn btn-outline-primary cart-btn" onclick="flip(event)">Description</a>
+                                    <div class="d-flex justify-content-around">
+                                    <button class="btn btn-danger btn-sm mt-3" type="type" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><span class="material-icons">delete</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mycard1">
+                                <div class="card-img-top menu-img flipped-img text-center" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Description</h5>
+                                        <div class="d-flex justify-content-around">
+                                            <p class="card-text mb-2">{{itemDescription}}</p>
+                                        </div>
+                                    </div>
+                                    <a id="desc-btn" class="btn btn-outline-primary cart-btn" onclick="flip(event)">Back</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Alert</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="DeleteFav('{{_id}}')">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
+{{/if}}
+
+
+
+{{#if nofav}}
+<section class="section menu-section yellow-section-background">
+    <div class="container">
+        <div class="menu-card-box">
+            <div class="row">
+                <h1 class="main-heading text-center mt-5 mb-5">{{nofav}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+{{/if}}
+
+
+
+{{!-- End of Menu Section --}}
+
+
+
+{{!-- Start of Review Section --}}
+<section class="section review-section pt-5 pb-5 bg-white">
+    <div class="container">
+        <h2 class="main-heading text-center mt-5 mb-5">Reviews</h2>
+        <p class="subheading card-title text-center mb-5">Feel Free To Share Your Views.</p>
+        {{!--  --}}
+        <div class="text-center">
+            <div class="d-grid gap-2 col-3 mx-auto mt-5 mb-5">
+                <button class="btn btn-primary btn-continue" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Write Review
+                </button>
+                
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="staticBackdropLabel">Let Us Know Your Thoughts !!!</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="/users/profile" id="review-form">
+                <div class="form-group">
+                    <div class="modal-body">
+                        <div class="form-floating mb-5">
+                            <input class="form-control" id="review" type="text" placeholder="Please Enter Food Name..." name="review" required>
+                            <label for="review">Review</label>
+                        </div>
+                        <input id="userid" name="userId" type="text" value="{{data._id}}" class="form-control" hidden>
+                        <div class="form-floating mb-5">
+                            <select class="form-select" id="rating" name="rating">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <label for="rating">Rating</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>    
+                </form>
+                </div>
+            </div>
+        </div>
+        {{!--  --}}
+        {{#if rarr}}
+        <div class="slider slider-nav">
+            {{#each rarr}}
+            <div class="card review-card">
+                <div class="card-body">
+                    <p class="card-title">{{review}}</p>
+                    <p class="card-text">Rating : {{rating}} / 5</p>
+                    <p class="card-text">Date : {{dateofReview}}</p>
+                    {{!-- <a href="#" class="btn btn-danger">Go somewhere</a> --}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+</section>
+{{/if}}
+{{!-- End of Review Section --}}
+
+{{#if errors}}
+<section class="section admin-section">
+  <div class="container">
+    <div class="row">
+        <h2 class="main-heading text-center mt-5 mb-5">Reviews</h2>
+        <p class="subheading">{{errors}}</p>
+        <a class="subheading mb-5" href="./profile">Back to Reviews</a>
+    </div>
+  </div>
+</section>
+{{/if}}
+
+
+<script>
+    function DeleteFav(id){
+
+                    var requestConfig = {
+					method: 'POST',
+					url: '/favourites/delete',
+					contentType: 'application/json',
+					data: JSON.stringify({
+						itemid:id
+					})
+				};
+
+				$.ajax(requestConfig).then(function(responseMessage) {
+					if(responseMessage.success==true){
+                                            window.location.replace("http://localhost:3000/users/profile");                        
+                    } else {
+                        console.log(responseMessage)
+                            alert(responseMessage.success)
+                        
+                    }
+					//                alert("Data Saved: " + msg);
+				});
+
+
+
+    }
+
+</script>

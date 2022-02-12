@@ -1,0 +1,54 @@
+  {{!-- Start of Login Form --}}
+
+<section class="section login-form pt-3 yellow-section-background">
+  <div class="container">
+    <div class="mt-5 mb-5">
+      <h1 class="main-heading text-center mt-5 mb-5">Log In</h1>
+      <p class="subheading card-title text-center mb-5">Log into your Everyday Brunch account</p>
+    </div>
+    <form method="POST" action="/login" id="login-form">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 offset-md-3">
+            <div class="form-floating mb-5">
+              <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" >
+              <label for="floatingInput">Username</label>
+              <div id="no-email" style="color: red;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" hidden>*Please Enter your username </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 offset-md-3">
+            <div class="form-floating mb-5">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" >
+              <label for="floatingPassword">Password</label>
+              <div id="no-password" style="color: red;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" hidden>*Please Enter your password</div>
+            </div>
+          </div>  
+        </div>
+        <div id="error">
+        <ul id="errorList"></ul>
+        </div>
+        {{#if hasErrors}}
+    <p class="error">{{error}}</p>
+      {{/if}}
+        <div class="text-center pt-5 pb-5 d-grid gap-2 col-6 mx-auto"> 
+            {{#if cart}}
+          <span class="fs-5">***{{cart}}***</span>
+          {{/if}}
+          <button type="submit" class="btn btn-primary btn-lg mb-3">Log In</button>
+          <span class="fs-5">Don't have an account? <a class="js-toggle-to-sign-up blue-text-link" href="/signup">Sign Up</a></span>
+        </div>
+      </div>
+      
+
+    </form>
+  </div>
+
+</section>
+
+
+
+
+  {{!-- End of Login Form --}}
+

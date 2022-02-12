@@ -1,0 +1,103 @@
+{{!-- Start of Cart Section --}}
+<section class="section cart-section">
+    <div class="container">
+        <h1 class="main-heading text-center pt-5 pb-5">My Cart</h1>
+        
+        {{#if failedtitle}}
+        <p class="main-heading text-center pt-5 pb-5">{{failedtitle}}</p>
+        {{/if}}
+        {{#if cartdetails}}
+        {{#each cartdetails}}
+        <div class="card m-4 m-md-5">
+            
+            <div class="row g-0">
+                
+                <div class="col-md-4">
+                    <div class="left-cart-box">
+                        <img src="./public/images/Menu/{{details.image}}" class="img-fluid rounded-start w-100" alt="...">
+                        <form method="post" action="cartpage/delete">
+            <input type="text" value="{{_id}}" id="deleteid" name="delete" hidden>
+                        <button type="submit" class="btn btn-outline-danger remove-btn mb-3 mt-3" id="liveAlertBtn" data-bs-toggle="modal" data-bs-target=".cartmodal">Remove</button>
+                 </form>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="right-cart-box p-md-3 p-lg-5">
+                            <p class="card-title cart-item-title mb-3 mb-md-4">{{details.title}}</p>
+                            <div class="row">
+                                <div class="col-sm-5"> 
+                                    <div class="menu-quantity d-flex">
+                                        <p class="card-text cart-info me-2"><strong>quantity</strong></p>
+                                            <button type="button" class="btn btn-outline-primary quantity-btn" id="{{_id}}78" onclick="reduce(event)">-</button>
+                                            <input class="form-control form-control-sm quantity-txtbox text-center {{_id}}34" type="text" value="{{quantity}}" aria-label=".form-control-sm example" disabled>
+                                            <button type="button" class="btn btn-outline-primary quantity-btn" id="{{_id}}56" onclick="increase(event)">+</button>
+                                    </div>
+                                    <p class="card-text cart-info {{_id}}{{_id}}"><strong>Price :</strong> {{priceOfItem}}</p>
+                                    <p class="card-text cart-info mb-3"><strong>Cal (Individual) :</strong> {{details.cal}}</p>
+                                </div>
+                                <div class="col-sm-7"> 
+                                    <p class="card-text cart-info"><strong>Description :</strong></p>
+                                    <p class="card-text cart-info">{{details.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{/each}}
+        
+                <div class="card m-4 m-md-5">
+            <div class="row g-0">
+                <div class="offset-md-4 col-md-4">
+                    <div class="card-body">
+                        <div class="right-cart-box p-md-3 px-lg-5">
+                            <p class="card-text cart-info"><strong>Tax :</strong>{{tax}}</p>
+                            <p class="card-text cart-info pb-3"><strong>Total :</strong>{{total}}</p>
+                            <div class="d-grid col-sm-12">
+                                
+                                <button class="btn btn-primary btn-continue" type="button" value="Go to Payment Page" data-bs-toggle="modal" data-bs-target=".checkoutmodal"> <strong> Checkout</strong></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkoutmodal modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="staticBackdropLabel1">Alert</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to checkout ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" href="/payment">Checkout</a>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+        {{/if}}
+        {{#if NoCart}}
+
+                <div class="col-md-8">
+            <h5>{{NoCart}}</h5>
+        </div>
+
+        {{/if}}
+
+    </div>    
+    
+</section>
+
+{{!-- End of Cart Section --}}
