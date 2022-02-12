@@ -18,8 +18,8 @@ This project aims to create a system to help users to order brunch from Everyday
 
 ## Instructions to use the website
 Please use the username given below for "USER" login 
-* Username: AkshayS
-* Password: AkshaySPW
+* Username: RoshanB
+* Password: Roshan123
 
 Please use the username given below for "ADMIN" login 
 * Username: admin
