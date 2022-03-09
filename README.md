@@ -35,9 +35,6 @@ For making payment "FAIL", please use the card number given below
 
 For the email functionality, sometimes you may not get an email because load mailer API will throw an error and google blocks it for suspicious activity from third party application even though we have enabled less secure apps. 
 
-So, please use the credentials given below.
-* username: sudronikbusiness@gmail.com
-* password: 8454949819
 
 Food items are dependent on the categories so, please add the categories before food items.
 
